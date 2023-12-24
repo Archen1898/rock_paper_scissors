@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let playerChoice = prompt('Rock, Paper, or Scissors?');
+        playerChoice = playerChoice.toLowerCase();
+        playerChoice.trim();
+        console.log('Player: ' + playerChoice);
+        while(playerChoice != 'paper' && playerChoice != 'rock' && playerChoice != 'scissors'){
+            playerChoice = prompt('You did not correctly enter Rock, paper, or scissors.\nTry again.');
+            playerChoice = playerChoice.toLowerCase();
+            playerChoice = playerChoice.trim();
+        }
+    
+        function getComputerChoice(){
+            let num = Math.floor(Math.random()*(4-1)+1);
+            console.log(num);
+            if(num == 1){
+                choice = 'paper';
+            }else if(num == 2){
+                choice = 'rock';
+            }else if(num == 3){
+                choice = 'scissors';
+            }
+            console.log('Computer: ' + choice);
+            return choice;
+        }
+
+
+        function playRound(playerSelection, computerSelection){
+            let player = playerSelection.toLowerCase();
+            let computer = computerSelection.toLowerCase();
+
+            console.log(player);
+            console.log(computer);
+
+            if(computer == player){
+                return("It's a tie!");
+            }else if( (player=='rock' && computer == 'scissors') || (player == 'paper' && computer == 'rock') || (player == 'scissors' && computer == 'paper') ){
+                return "Player Wins!";
+            }else{
+                return "Computer Wins!";
+            }
+        }
+        
+        //console.log(getComputerChoice());
+        console.log(playRound(playerChoice,getComputerChoice()));
+        </script>
+</body>
+</html>
